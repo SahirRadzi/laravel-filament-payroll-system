@@ -32,7 +32,7 @@ class EmployeeResource extends Resource
                     ->numeric()
                     ->minValue('0'),
                 Forms\Components\Select::make('department_id')
-                    ->relationship('department', 'name')
+                    ->relationship('department', 'name', fn (Builder $query) => $query->where('is_active', true))
                     ->required(),
                 Forms\Components\TextInput::make('basic_salary')
                     ->required()
